@@ -1,0 +1,64 @@
+import java.math.BigDecimal;
+import java.util.*;
+class Solution{
+    public static void main(String []args){
+        //Input
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        String []s=new String[n+2];
+        for(int i=0;i<n;i++){
+            s[i]=sc.next();
+        }
+        sc.close();
+            
+        for(int i=0; i<n; i++){
+            
+
+            BigDecimal bdi=new BigDecimal(s[i]); 
+            
+            for(int j=i+1; j<n; j++){
+                
+                  BigDecimal bdj=new BigDecimal(s[j]);
+                    
+                    if (bdi.compareTo(bdj)==0){
+                        s[i]=""+s[i]+"\n"+s[j];
+                        
+                        for (int k=j; k<n; k++){
+                            s[k]=s[k+1];   
+                        }
+                        n--;
+                                       
+                    }
+                    
+                
+            }
+            
+        }
+        
+        for(int i=0; i<n; i++){
+            String [] xi=s[i].split("\n");
+            BigDecimal bd1=new BigDecimal(xi[0]);
+                
+                for(int j=i+1;j<n; j++){
+                        String [] xj=s[j].split("\n");
+                        BigDecimal bd2=new BigDecimal (xj[0]);  
+                
+                    if(bd1.compareTo(bd2)<0) {
+                        String a=s[i];
+                        s[i]=s[j];
+                        s[j]=a; 
+                        
+                        BigDecimal x=bd1;
+                        bd1=bd2;
+                        bd2=x;
+                        }              
+                }
+        }
+
+        //Output
+        for(int i=0;i<n;i++)
+        {
+            System.out.println(s[i]);
+        }
+    }
+}
