@@ -1,0 +1,32 @@
+
+import static java.lang.System.in;
+
+class Prime{
+    
+    boolean getPrimes (int n){
+               
+       if(n==2 || n==3) return true;
+       
+       if(n<=1 || n%2==0 ) return false;
+       
+       for (int div=3; div*div<=n; div+=2){
+           
+           if (n%div==0) return false;
+       }
+       
+       return true;
+        
+    }
+    
+    
+    void checkPrime(int... numbers){
+        
+        for(int n: numbers){            
+           if(getPrimes(n)) System.out.print(n+" ");
+        }
+
+        System.out.println();
+    }
+    
+
+}
