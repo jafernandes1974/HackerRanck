@@ -1,1 +1,36 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Scanner;
 
+class Solution{
+
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String IP = in.next();
+            System.out.println(IP.matches(new MyRegex().pattern));
+        }
+
+    }
+}
+
+class MyRegex{
+    
+    public String pattern;
+    
+    public MyRegex(){
+        
+        String oneOrTwo="\\d{1,2}";
+        String lt200="[0-1]\\d{2}";
+        String lt250="2[0-4]\\d";
+        String lt256="25[0-5]";
+        
+        String group="("+oneOrTwo+"|"+lt200+"|"+lt250+"|"+lt256+")";
+        
+        this.pattern="("+group+"\\.){3}"+group;
+        
+        //System.out.println(pattern);
+   
+    }   
+    
+}
